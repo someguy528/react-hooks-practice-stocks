@@ -1,11 +1,19 @@
 import React from "react";
 import Stock from "./Stock";
 
-function StockContainer() {
+function StockContainer({stocks, onBuyAndSell}) {
+
+  const displayedStocks = stocks.map(stock => {
+    if (stock.bought === false){
+    return (
+      <Stock key={stock.id} stock={stock} onBuyAndSell={onBuyAndSell} /> 
+    )
+  }})
+
   return (
     <div>
       <h2>Stocks</h2>
-      {/* render stock list here*/}
+      {displayedStocks}
     </div>
   );
 }
